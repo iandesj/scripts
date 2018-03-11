@@ -76,7 +76,7 @@ WantedBy=default.target
 EOL
 sudo mv /tmp/masternode.service /etc/systemd/system
 sudo mv geth /usr/sbin/
-systemctl status masternode
+systemctl status masternode --no-pager --full
 else
   echo 'systemd service will not be created.'
 fi
