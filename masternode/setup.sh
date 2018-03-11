@@ -36,11 +36,11 @@ done
 
 # Check release types to install dependencies appropriately
 if [ -f /etc/redhat-release ]; then
-  sudo yum unzip wget
+  sudo yum curl unzip wget
 fi
 
 if [ -f /etc/lsb-release ]; then
-  sudo apt-get install unzip wget
+  sudo apt-get install curl unzip wget
 fi
 
 # Download release zip for node
