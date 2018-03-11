@@ -96,8 +96,9 @@ try:
 
 	print('Done...')
 	print('[#############################]\n')
-	browser.close()
 
+	browser.close()
+	service.stop()
 except KeyboardInterrupt:
 	browser.close()
 	service.stop()
