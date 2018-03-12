@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Logic to handle arguments for optionally creating systemd service
 SYSTEMD=false
@@ -13,7 +13,7 @@ case $i in
     -p=*|--rpcport=*)
     RPCPORT="${i#*=}"
     re='^[0-9]+$'
-    if ! [[ $RPCPORT =~ $re ]] ; then
+    if ! [ $RPCPORT =~ $re ] ; then
       echo "error: Provided RPC Port is not a number" >&2; exit 1
     fi
     echo '-p or --rpcport option will only be used when -s or --systemd is provided'
@@ -59,7 +59,7 @@ chmod +x geth
 # Cleanup
 rm release.linux-*0.0.8.zip
 
-if [[ "$SYSTEMD" = true ]]; then
+if [ "$SYSTEMD" = true ]; then
 cat > /tmp/masternode.service << EOL
 [Unit]
 Description=Akroma Client -- masternode service
