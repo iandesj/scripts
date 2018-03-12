@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Logic to handle arguments for optionally creating systemd service
 SYSTEMD=false
@@ -40,11 +40,11 @@ if [ -f /etc/redhat-release ]; then
 fi
 
 if [ -f /etc/lsb-release ]; then
-  sudo apt-get install curl unzip wget
+  sudo apt-get update && sudo apt-get install curl unzip wget -y
 fi
 
 if [ -f /etc/os-release ]; then
-  sudo apt-get install curl unzip wget
+  sudo apt-get update && sudo apt-get install curl unzip wget -y
 fi
 
 # Download release zip for node
