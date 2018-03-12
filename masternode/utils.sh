@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Logic to handle arguments for optionally creating systemd service
 for i in "$@"
