@@ -44,7 +44,7 @@ if [ -f /etc/lsb-release ]; then
 fi
 
 # Download release zip for node
-if [ $(uname -m) == 'x86_64' ]; then
+if [ $(uname -m) = 'x86_64' ]; then
   wget https://github.com/akroma-project/akroma/releases/download/0.0.8/release.linux-amd64.0.0.8.zip
 else
   wget https://github.com/akroma-project/akroma/releases/download/0.0.8/release.linux-386.0.0.8.zip
