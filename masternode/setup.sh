@@ -36,14 +36,10 @@ done
 
 # Check release types to install dependencies appropriately
 if [ -f /etc/redhat-release ]; then
-  sudo yum curl unzip wget
+  sudo yum install curl unzip wget -y
 fi
 
-if [ -f /etc/lsb-release ]; then
-  sudo apt-get update && sudo apt-get install curl unzip wget -y
-fi
-
-if [ -f /etc/os-release ]; then
+if [ "$(grep -Ei 'debian|buntu' /etc/*release)" ]; then
   sudo apt-get update && sudo apt-get install curl unzip wget -y
 fi
 
