@@ -13,7 +13,7 @@ case $i in
     shift
     ;;
     -i|--nodeIp)
-    echo 'Node IP:' $(curl --silent icanhazip.com)
+    echo 'Node IP:' $(curl --silent -4 icanhazip.com)
     shift
     ;;
     -h|--help)
