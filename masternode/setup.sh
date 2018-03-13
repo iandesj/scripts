@@ -60,6 +60,9 @@ chmod +x geth
 rm release.linux-*0.0.8.zip
 
 if [ "$SYSTEMD" = true ]; then
+    if [ -f /etc/systemd/system/masternode.service ]; then
+        sudo systemctl stop masternode && sudo rm /etc/systemd/system/msternode.service
+    else
 cat > /tmp/masternode.service << EOL
 [Unit]
 Description=Akroma Client -- masternode service
@@ -74,9 +77,10 @@ ExecStart=/usr/sbin/geth --masternode --rpcport ${RPCPORT}
 [Install]
 WantedBy=default.target
 EOL
-sudo mv /tmp/masternode.service /etc/systemd/system
-sudo mv geth /usr/sbin/
-systemctl status masternode --no-pager --full
+        sudo mv /tmp/masternode.service /etc/systemd/system
+        sudo mv geth /usr/sbin/
+        systemctl status masternode --no-pager --full
+    fi
 else
   echo 'systemd service will not be created.'
 fi
