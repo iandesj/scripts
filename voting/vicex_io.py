@@ -1,6 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import os
+import platform
 from time import sleep
 
 from selenium import webdriver
@@ -19,7 +20,10 @@ try:
 	chrome_options.add_argument('--headless')  
 
 	# path to the binary of Chrome
-	chrome_options.binary_location = '/usr/bin/google-chrome-stable'
+        if platform.system() is 'Darwin':
+	    chrome_options.binary_location = '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+        elif platform.system() is 'Linux':
+	    chrome_options.binary_location = '/usr/bin/google-chrome-stable'
 
 
 	print('Opening Chrome...')
