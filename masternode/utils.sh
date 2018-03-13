@@ -5,11 +5,11 @@ for i in "$@"
 do
 case $i in
     -e|--enodeId)
-    echo 'Enode Id:' $(journalctl -u masternode.service | grep 'UDP listener up' | awk '{print $11}' | grep -o -P '(?<=node://).*(?=@)')
+    echo 'Enode Id:' $(journalctl -u masternode.service | grep 'UDP listener up' | awk '{print $11}' | grep -o -P '(?<=node://).*(?=@)' | tail -1)
     shift
     ;;
     -p|--nodePort)
-    echo 'Node Port:' $(journalctl -u masternode.service | grep 'HTTP endpoint opened' | awk '{print $11}' | awk '{print $1}' | grep -o -P '(?<=http://0.0.0.0:).*')
+    echo 'Node Port:' $(journalctl -u masternode.service | grep 'HTTP endpoint opened' | awk '{print $11}' | awk '{print $1}' | grep -o -P '(?<=http://0.0.0.0:).*' | tail -1)
     shift
     ;;
     -i|--nodeIp)
