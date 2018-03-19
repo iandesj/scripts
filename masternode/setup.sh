@@ -61,7 +61,7 @@ rm release.linux-*0.0.8.zip
 
 if [ "$SYSTEMD" = true ]; then
     if [ -f /etc/systemd/system/masternode.service ]; then
-        sudo systemctl stop masternode && sudo rm /etc/systemd/system/msternode.service
+        sudo systemctl stop masternode && sudo systemctl disable masternode && sudo rm /etc/systemd/system/masternode.service
     fi
 cat > /tmp/masternode.service << EOL
 [Unit]
@@ -78,7 +78,7 @@ ExecStart=/usr/sbin/geth --masternode --rpcport ${RPCPORT}
 WantedBy=default.target
 EOL
         sudo mv /tmp/masternode.service /etc/systemd/system
-        sudo mv geth /usr/sbin/
+        sudo cp geth /usr/sbin/
         systemctl status masternode --no-pager --full
 else
   echo 'systemd service will not be created.'
