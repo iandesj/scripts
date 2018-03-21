@@ -2,7 +2,7 @@
 
 SYSTEMD_INUSE=0
 
-if systemctl is-active --quiet masternode; then
+if systemctl is-active --quiet akromanode; then
   SYSTEMD_INUSE=1
 fi
 
@@ -12,7 +12,7 @@ do
 case $i in
     -e|--enodeId)
     if [ $SYSTEMD_INUSE -eq 1 ]; then
-      echo 'Enode Id:' $(journalctl -u masternode.service | grep 'UDP listener up' | awk '{print $11}' | grep -o -P '(?<=node://).*(?=@)' | tail -1)
+      echo 'Enode Id:' $(journalctl -u akromanode.service | grep 'UDP listener up' | awk '{print $11}' | grep -o -P '(?<=node://).*(?=@)' | tail -1)
     else
       echo 'Enode Id:' $(echo "$(tac ./geth.out)" | grep 'UDP listener up' | awk '{print $6}' | grep -o -P '(?<=node://).*(?=@)' | tail -1)
     fi
@@ -20,7 +20,7 @@ case $i in
     ;;
     -p|--nodePort)
     if [ $SYSTEMD_INUSE -eq 1 ]; then
-      echo 'Node Port:' $(journalctl -u masternode.service | grep 'HTTP endpoint opened' | awk '{print $11}' | awk '{print $1}' | grep -o -P '(?<=http://0.0.0.0:).*' | tail -1)
+      echo 'Node Port:' $(journalctl -u akromanode.service | grep 'HTTP endpoint opened' | awk '{print $11}' | awk '{print $1}' | grep -o -P '(?<=http://0.0.0.0:).*' | tail -1)
     else
       echo 'Node Port:' $(echo "$(tac ./geth.out)" | grep 'HTTP endpoint opened' | awk '{print $6}' | awk '{print $1}' | grep -o -P '(?<=http://0.0.0.0:).*' | tail -1)
     fi
