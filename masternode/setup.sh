@@ -30,7 +30,7 @@ case $i in
     -h|--help)
     echo '-s=true or --systemd=true will create a systemd service for starting and stopping the masternode instance'
     echo '-p=port# or --rpcport=port# option to set specific port# for geth rpc to listen on (option will only be used if systemd service is created)'
-    echo '-u=user# or --user=user# option to set/create user to run geth'
+    echo '-u=user# or --user=user# option to set/create user to run geth (for default user "akroma" use only -u/--user)'
     exit 1
     ;;
     -u=*|--user=*)
