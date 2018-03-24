@@ -105,7 +105,7 @@ if [ "$SYSTEMD" = true ]; then
         sudo systemctl stop masternode && sudo systemctl disable masternode && sudo rm /etc/systemd/system/masternode.service
     fi
 echo '=========================='
-echo 'Condiguring service...'
+echo 'Configuring service...'
 echo '=========================='
 
 cat > /tmp/masternode.service << EOL
