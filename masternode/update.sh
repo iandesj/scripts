@@ -13,7 +13,7 @@ sudo systemctl enable akromanode
 
 
 # utils
-wget https://raw.githubusercontent.com/akroma-project/akroma-masternode-management/master/scripts/any/utils.sh
+wget -N https://raw.githubusercontent.com/akroma-project/akroma-masternode-management/master/scripts/any/utils.sh
 chmod +x utils.sh # makes script executable
 ./utils.sh --enodeId --nodePort --nodeIp
 
